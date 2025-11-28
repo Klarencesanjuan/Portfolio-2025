@@ -1,0 +1,250 @@
+/* Base Styles and Font Reset */
+:root {
+    --color-purple: #3d107a;
+    --color-orange: #ff5733;
+    --color-white: #ffffff;
+    --font-family: 'Manrope', sans-serif;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--font-family);
+    color: var(--color-white);
+    height: 100%;
+    overflow-x: hidden;
+}
+
+/* --- Background Gradient (on the .hero-container) --- */
+.hero-container {
+    width: 95%;
+    /* Flexible min-height */
+    min-height: 100vh;
+    position: relative;
+    overflow: hidden;
+    
+    background: linear-gradient(to right bottom, var(--color-purple) 0%, #421399 30%, #e46917 70%, var(--color-orange) 100%);
+    
+    background-size: 300% 300%;
+    animation: bounceGradient 10s ease-in-out infinite alternate;
+    
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
+    padding: 0 4%;
+}
+
+@keyframes bounceGradient {
+    0% { background-position: 0% 50%; }
+    33% { background-position: 50% 100%; }
+    66% { background-position: 100% 0%; }
+    100% { background-position: 0% 100%; }
+}
+
+/* --- Navigation Bar (Sticky at Top) --- */
+.navbar {
+    width: 500px; 
+    padding: 12px 20px;
+    border-radius: 50px; 
+    
+    /* Sticky positioning */
+    position: sticky; 
+    top: 0; /* Stays at the very top edge */
+    
+    margin-top: 20px; 
+
+    /* Glassmorphism Effect */
+    background: rgba(255, 255, 255, 0.1); 
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.3); 
+    display: flex;
+    justify-content: center;
+    z-index: 100; /* High Z-index to ensure it stays on top */
+    
+    /* Center the sticky element horizontally */
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.navbar nav a {
+    color: var(--color-white);
+    text-decoration: none;
+    font-weight: 400;
+    font-size: 16px;
+    margin: 0 15px;
+    transition: color 0.3s;
+}
+
+/* --- FRAME 1: Hero Content --- */
+.hero-content {
+    min-height: 800px; 
+    display: flex;
+    justify-content: space-between;
+    align-items: center; 
+    width: 100%;
+    max-width: 1240px; 
+    padding-top: 80px; 
+    z-index: 5;
+    margin: 0 auto;
+}
+
+.text-column { flex: 1; max-width: 55%; }
+.greeting { font-size: 24px; font-weight: 400; margin-bottom: 5px; }
+.title { font-size: 72px; font-weight: 800; line-height: 1.1; margin: 0 0 20px 0; }
+.bio { font-size: 18px; font-weight: 300; line-height: 1.6; max-width: 500px; margin-bottom: 40px; }
+
+/* Ghost Buttons */
+.cta-buttons .btn {
+    padding: 12px 25px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 400;
+    margin-right: 15px;
+    transition: all 0.3s;
+    background-color: transparent; 
+    color: var(--color-white);
+    border: 1px solid var(--color-white);
+}
+
+.primary-btn:hover,
+.secondary-btn:hover { background-color: rgba(255, 255, 255, 0.1); }
+
+/* Profile Image (Frame 1) */
+.image-column { flex: 1; display: flex; justify-content: flex-end; align-items: center; }
+.profile-frame-glass {
+    width: 420px; height: 420px; border-radius: 50%;
+    /* Glassmorphism Effect */
+    background: rgba(255, 255, 255, 0.1); 
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.3); 
+    display: flex; justify-content: center; align-items: center;
+    z-index: 6; 
+}
+
+.profile-image {
+    width: 420px; height: 420px; border-radius: 50%;
+    background-image: url('2x2.png'); 
+    background-size: cover; background-position: center top;
+    z-index: 5;
+}
+
+/* --- FRAME 2: ABOUT ME SECTION (Fluid Height + Reveal Animation) --- */
+.about-me-section {
+    width: 100%;
+    max-width: 1240px; 
+    min-height: 800px; 
+    
+    display: flex; 
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center; 
+    
+    margin: 0 auto; 
+    text-align: center;
+    
+    padding-top: 100px; 
+    padding-bottom: 100px;
+
+    /* Reveal-on-scroll initial state */
+    opacity: 0; 
+    transform: translateY(20px); 
+    transition: opacity 1s ease-out, transform 1s ease-out; 
+    
+    position: relative; 
+    z-index: 2;
+}
+
+/* Final state: This class is added by script.js when visible */
+.about-me-section.is-visible {
+    opacity: 1; 
+    transform: translateY(0); 
+}
+
+.about-me-section h2 { font-size: 48px; font-weight: 800; margin-bottom: 50px; color: #ffffff; }
+
+.about-card {
+    background-color: rgba(0, 0, 0, 0.329); 
+    border-radius: 20px;
+    padding: 40px 60px;
+    text-align: left;
+    width: 100%;
+    box-sizing: border-box;
+
+    /* NEW: Add a subtle white border (stroke) */
+    border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.bio-and-photo {
+    display: flex; align-items: flex-start; gap: 30px; margin-bottom: 30px;
+}
+
+.profile-photo-small {
+    width: 200px; 
+    height: 200px; 
+    border-radius: 25px; /* Changed from 50% to 25px for box shape */
+    
+    background-color: transparent; /* Changed to transparent */
+    
+    flex-shrink: 0; 
+    background: rgba(255, 255, 255, 0.1); 
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(8px); 
+    -webkit-backdrop-filter: blur(8px);
+
+
+    background-image: url('2x2.png'); 
+    background-size: cover; 
+    background-position: center top;
+}
+
+.bio-text-card { font-size: 16px; font-weight: 300; line-height: 1.6; color: #e0e0e0; }
+
+/* Metrics and Tools Styling */
+.divider { border: 0; height: 1px; background: rgba(255, 255, 255, 0.1); margin: 30px 0; }
+.metrics-row { display: flex; justify-content: space-around; align-items: center; text-align: center; margin: 40px 0; }
+.metric-item { display: flex; flex-direction: column; }
+.metric-number { font-size: 48px; font-weight: 800; line-height: 1; margin-bottom: 5px; }
+.metric-label { font-size: 16px; font-weight: 400; color: #b0b0b0; }
+.tools-row { display: flex; justify-content: center; gap: 25px; margin-top: 40px; }
+.tool-icon {
+    width: 50px; height: 50px; border-radius: 10px; display: flex; justify-content: center;
+    align-items: center; font-size: 20px; font-weight: 700; color: var(--color-white);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+}
+
+/* Tool Specific Colors */
+.ps { background-color: #007ACC; } 
+.ai { background-color: #FF9A00; } 
+.ae { background-color: #9999FF; } 
+.canva { background-color: #00C4CC; } 
+.premier { background-color: #9E355C; } 
+.figma { background-color: #A259FF; } 
+
+
+/* --- Media Query for Responsiveness --- */
+@media (max-width: 850px) {
+    /* Sticky nav bar adjustments for mobile */
+    .navbar {
+        width: 90%;
+        margin-top: 15px;
+        transform: none;
+        left: 5%;
+    }
+    
+    /* Hero Section adjustments for smaller screens */
+    .hero-content { min-height: 80vh; padding-top: 100px; flex-direction: column; align-items: center; text-align: center; }
+    .about-me-section { min-height: auto; padding-top: 100px; padding-bottom: 100px; }
+    
+    .text-column { max-width: 100%; order: 2; }
+    .image-column { order: 1; margin-bottom: 40px; }
+    .title { font-size: 56px; }
+    
+    /* About Card adjustments for smaller screens */
+    .about-card { padding: 20px; }
+    .bio-and-photo { flex-direction: column; align-items: center; text-align: center; }
+    .metrics-row { flex-direction: column; gap: 30px; }
+}
