@@ -25,10 +25,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // -----------------------------------------------------------------
-    // 2. SECTION REVEAL LOGIC (FOR ABOUT ME AND PROJECTS)
+    // 2. SECTION REVEAL LOGIC (FOR ABOUT ME, PROJECTS, SERVICES, CONTACT)
     // -----------------------------------------------------------------
     const aboutSection = document.querySelector('.about-me-section');
     const projectsSection = document.getElementById('projects'); 
+    const servicesSection = document.getElementById('services');
+    const contactSection = document.getElementById('contact');
 
     const observerOptions = {
         root: null, 
@@ -63,7 +65,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Apply the observer to both main sections (About Me and Projects)
+    // Apply the observer to all main sections
     createObserver(aboutSection);
-    createObserver(projectsSection); 
+    createObserver(projectsSection);
+    createObserver(servicesSection);
+    createObserver(contactSection);
 });

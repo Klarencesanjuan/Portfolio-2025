@@ -84,7 +84,7 @@ body {
     display: flex;
     flex-direction: column; 
     align-items: center; 
-    padding: 0 20px; /* Use smaller padding for safety */
+    padding: 0 20px; 
     margin: 0 auto;
 
     opacity: 1; 
@@ -106,11 +106,10 @@ body {
     position: sticky; 
     top: 20px; 
     
-    margin-bottom: 40px; /* Increased margin for better spacing */
+    margin-bottom: 40px; 
 
     /* Glassmorphism Effect */
     background: rgba(255, 255, 255, 0.1); 
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
     border: 1px solid rgba(255, 255, 255, 0.3); 
     display: flex;
@@ -126,8 +125,8 @@ body {
     text-decoration: none;
     font-weight: 400;
     font-size: 16px;
-    margin: 0; /* GINAWANG ZERO ANG DEFAULT MARGIN PARA HINDI MAG-EXCEED SA MOBILE */
-    padding: 0 10px; /* NAGDAGDAG NG PADDING PARA MAY SPACE PA RIN SA DESKTOP */
+    margin: 0; 
+    padding: 0 10px; 
     transition: color 0.3s;
 }
 
@@ -145,7 +144,7 @@ body {
 }
 
 .text-column { 
-    flex: 1 1 50%; /* Flexible basis: 50% */
+    flex: 1 1 50%; 
     max-width: 55%; 
     min-width: 300px;
 } 
@@ -172,7 +171,7 @@ body {
 
 /* Profile Image (Frame 1) */
 .image-column { 
-    flex: 1 1 40%; /* Flexible basis: 40% */
+    flex: 1 1 40%; 
     display: flex; 
     justify-content: flex-end; 
     align-items: center; 
@@ -180,7 +179,7 @@ body {
 .profile-frame-glass {
     width: 420px; 
     height: 420px; 
-    max-width: 100%; /* Safety max-width */
+    max-width: 100%; 
     max-height: 100%;
     border-radius: 50%;
     
@@ -278,7 +277,7 @@ body {
 .metric-item { 
     display: flex; 
     flex-direction: column; 
-    flex: 1; /* Ensure equal space */
+    flex: 1; 
 }
 .metric-number { font-size: 48px; font-weight: 800; line-height: 1; margin-bottom: 5px; }
 .metric-label { font-size: 16px; font-weight: 400; color: #ffffff; }
@@ -344,11 +343,11 @@ body {
     border-radius: 40px; 
     border: 1px solid rgba(255, 255, 255, 0.3);
     overflow: hidden; 
-    position: relative; /* **CRUCIAL for positioning label and button** */
+    position: relative; 
     display: flex;
     justify-content: center;
     align-items: center;
-    font-weight: 550; /* ADDED: Makes the arrow thicker */
+    font-weight: 550; 
     
     
     
@@ -369,10 +368,10 @@ body {
 /* Banner Item Spanning Two Columns (Desktop) */
 .project-item.banner {
     grid-column: 1 / -1; 
-    aspect-ratio: 2 / 1; /* Wider aspect ratio for the banner */
+    aspect-ratio: 2 / 1; 
 }
 
-/* --- NEW ELEMENTS: Project Label and Circle Button --- */
+/* --- Project Label and Circle Button --- */
 .project-item .project-label {
     position: absolute;
     top: 40px; 
@@ -383,44 +382,49 @@ body {
     z-index: 50; 
 }
 
-/* MODIFIED: Targetting the <a> element now, instead of a div */
 .project-item a.circle-button {
     position: absolute;
-    top: 40px; /* Aligned with the label's top position */
-    right: 55px; /* Adjusted spacing */
+    top: 40px; 
+    right: 55px; 
     
-    width: 35px; /* INCREASED SIZE for better tap target and arrow space */
+    width: 35px; 
     height: 35px;
-    border: 2px solid var(--color-white); /* White border for the circle */
+    border: 2px solid var(--color-white); 
     border-radius: 50%;
     
     background-color: transparent;
     cursor: pointer;
     z-index: 50; 
     
-    /* These three lines are key for perfect centering */
     display: flex;
-    justify-content: center; /* Centers horizontally */
-    align-items: center;    /* Centers vertically */
-    text-decoration: none; /* Remove underline from the anchor tag */
+    justify-content: center; 
+    align-items: center; 
+    text-decoration: none; 
     
     transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 .project-item a.circle-button:hover {
     background-color: rgba(255, 255, 255, 0.1);
-    border-color: var(--color-white); /* Slight color change on hover for effect */
+    border-color: var(--color-white); 
 }
 
-/* NEW: Style for the arrow icon inside the button */
-.project-item .circle-button .arrow-icon {
-    font-size: 20px; /* Size of the arrow */
-    line-height: 1; /* Helps ensure the character itself doesn't add extra line height */
-    color: var(--color-white); /* Color of the arrow */
-    /* Removed 'display: block;' and 'transform: translateY(2px);'
-       to rely purely on flexbox for centering */
+/* Style for the SVG icon inside the button */
+.project-item a.circle-button .arrow-icon {
+    width: 60%; 
+    height: 60%; 
+    color: var(--color-white); 
+    
+    display: block; 
+    margin: auto; 
+    
+    transition: transform 0.3s ease;
 }
-/* --- END NEW ELEMENTS --- */
+
+.project-item a.circle-button:hover .arrow-icon {
+    transform: scale(1.1);
+}
+/* --- END Project Elements --- */
 
 
 /* --- Inner Image Frame Styling (Responsive to Parent) --- */
@@ -450,6 +454,235 @@ body {
 .project-image-inner:hover {
     transform: scale(1.02);
 }
+
+/* --- NEW SERVICES SECTION (FRAME 4) --- */
+.services-section {
+    width: 100%;
+    max-width: var(--max-content-width); 
+    min-height: 1024px; 
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    text-align: center;
+    padding: 100px 20px;
+
+    /* Animation Logic */
+    opacity: 0; 
+    transform: translateY(20px); 
+    transition: opacity 1s ease-out, transform 1s ease-out; 
+}
+
+.services-section.is-visible {
+    opacity: 1; 
+    transform: translateY(0); 
+}
+
+.services-section h2 { 
+    font-size: 48px; 
+    font-weight: 800; 
+    margin-bottom: 30px; 
+    color: #ffffff; 
+}
+
+.services-intro {
+    font-size: 18px;
+    font-weight: 300;
+    margin-bottom: 60px;
+    max-width: 700px;
+}
+
+.service-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+    gap: 30px;
+    width: 100%;
+}
+
+.service-card {
+    background-color: rgba(0, 0, 0, 0.329); 
+    border-radius: 20px;
+    padding: 30px;
+    text-align: left;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+}
+
+.service-card h3 {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--color-white); 
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+.service-card p {
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+.service-list {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+.service-list li {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.8;
+    position: relative;
+    padding-left: 20px;
+}
+
+.service-list li::before {
+    content: '★'; 
+    color: var(--color-white); 
+    position: absolute;
+    left: 0;
+}
+
+/* --- NEW CONTACT SECTION (FRAME 5) --- */
+.contact-section {
+    width: 100%;
+    max-width: var(--max-content-width); 
+    min-height: 80vh; 
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    text-align: center;
+    padding: 100px 20px 50px 20px; 
+
+    /* Animation Logic */
+    opacity: 0; 
+    transform: translateY(20px); 
+    transition: opacity 1s ease-out, transform 1s ease-out; 
+}
+
+.contact-section.is-visible {
+    opacity: 1; 
+    transform: translateY(0); 
+}
+
+.contact-section h2 { 
+    font-size: 48px; 
+    font-weight: 800; 
+    margin-bottom: 30px; 
+    color: #ffffff; 
+}
+
+.contact-intro {
+    font-size: 18px;
+    font-weight: 300;
+    margin-bottom: 60px;
+}
+
+.contact-card-frame {
+    background-color: rgba(0, 0, 0, 0.329); 
+    border-radius: 20px;
+    padding: 40px 60px;
+    width: 100%;
+    max-width: 800px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    display: flex;
+    justify-content: space-around;
+    gap: 40px;
+    text-align: left;
+    margin-bottom: 50px;
+}
+
+.contact-card-frame h3 {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--color-white); 
+    margin-top: 0;
+    margin-bottom: 25px;
+}
+
+.contact-details {
+    flex: 1;
+    min-width: 250px;
+}
+
+.detail-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    font-size: 16px;
+    font-weight: 300;
+}
+
+.detail-item .icon {
+    /* Set container size for SVG */
+    width: 20px; 
+    height: 20px;
+    margin-right: 15px;
+    flex-shrink: 0;
+}
+
+/* Rule to style the SVG inside the icon container */
+.detail-item .icon svg {
+    width: 100%;
+    height: 100%;
+    color: var(--color-white); 
+    display: block;
+    /* This ensures the stroke is visible and matches text color */
+    stroke: currentColor; 
+}
+
+
+.detail-item a {
+    color: var(--color-white);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.detail-item a:hover {
+    color: var(--color-white); 
+}
+
+.social-media {
+    flex-shrink: 0; 
+}
+
+.social-links-row {
+    display: flex;
+    gap: 20px;
+}
+
+.social-icon {
+    width: 50px; 
+    height: 50px; 
+    border-radius: 30%;
+    background-size: cover; 
+    background-position: center;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.social-icon:hover { 
+    transform: scale(1.3); 
+}
+
+/* Specific Social Icon Images (You need to provide these image files!) */
+.fb { background-image: url('facebook.png'); } 
+.ig { background-image: url('instagram.png'); } 
+.li { background-image: url('gmail.png'); } 
+.behance { background-image: url('behance.png'); } 
+
+.copyright {
+    font-size: 14px;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.7);
+    margin-top: 50px;
+}
+
 
 /* --- MEDIA QUERY: TABLET (1024px and below) --- */
 @media (max-width: 1024px) {
@@ -489,7 +722,7 @@ body {
     }
     .project-item, .project-item.banner {
         grid-column: auto;
-        aspect-ratio: 1.5 / 1; /* A wider rectangle for all projects on tablet */
+        aspect-ratio: 1.5 / 1; 
     }
     
     /* Image in tablet project item */
@@ -506,16 +739,41 @@ body {
         left: 30px; 
     }
     
-    /* MODIFIED: Adjusted top alignment for the larger button */
     .project-item a.circle-button { 
-        top: 15px; /* Slightly lower to match label padding */
+        top: 15px; 
         right: 30px; 
-        width: 30px; /* Adjust size for tablet */
+        width: 30px; 
         height: 30px;
     }
+
+    /* Services Section on Tablet */
+    .services-section {
+        min-height: auto; 
+        padding: 50px 20px;
+    }
+
+    /* Contact Section on Tablet */
+    .contact-card-frame {
+        flex-direction: column;
+        padding: 30px;
+        max-width: 600px;
+        text-align: center;
+    }
     
-    .project-item .circle-button .arrow-icon {
-        font-size: 18px;
+    .contact-card-frame h3 {
+        margin-bottom: 15px;
+    }
+
+    .detail-item {
+        justify-content: center;
+    }
+    
+    .social-media {
+        margin-top: 20px;
+    }
+
+    .social-links-row {
+        justify-content: center;
     }
 }
 
@@ -526,14 +784,14 @@ body {
     .content-wrapper { padding: 0 10px; }
     .about-me-section { padding: 50px 0; }
     
-    /* NAV BAR FIX - FINAL VERSION with Centering */
+    /* NAV BAR FIX */
     .navbar {
         width: 100%;
         max-width: 98%; 
         padding: 8px 5px; 
-        margin: 20px auto 40px auto; /* NEW: Added auto margins to center the block element */
-        left: auto; /* IMPORTANT: Overwrite the fixed desktop positioning */
-        transform: none; /* IMPORTANT: Overwrite the fixed desktop positioning */
+        margin: 20px auto 40px auto; 
+        left: auto; 
+        transform: none; 
     }
     .navbar nav {
         display: flex; 
@@ -585,7 +843,7 @@ body {
     .frame3-content { padding: 0 10px; }
     
     .project-item, .project-item.banner {
-        aspect-ratio: 1 / 1; /* Back to square for easier viewing on small screens */
+        aspect-ratio: 1 / 1; 
     }
     
     /* Image in mobile project item */
@@ -598,20 +856,46 @@ body {
 
     /* Mobile: Project Label and Button Positioning */
     .project-item .project-label {
-        top: 18px; 
+        top: 20px; 
         left: 30px; 
         font-size: 14px;
     }
     
-    /* MODIFIED: Adjusted top alignment for the larger button */
     .project-item a.circle-button {
-        top: 15px; 
-        right: 25px; /* Adjusted spacing */
+        top: 20px; 
+        right: 30px; 
         width: 25px; 
         height: 25px;
     }
 
-    .project-item .circle-button .arrow-icon {
+    /* Services Section on Mobile */
+    .services-section h2 { font-size: 36px; }
+    .services-intro { margin-bottom: 40px; font-size: 16px; }
+    .service-card { padding: 20px; }
+    .service-card h3 { font-size: 20px; }
+    .service-grid {
+        grid-template-columns: 1fr; 
+    }
+    
+    /* Contact Section on Mobile */
+    .contact-section h2 { font-size: 36px; }
+    .contact-intro { margin-bottom: 30px; font-size: 16px; }
+    
+    .contact-card-frame {
+        padding: 20px;
+        gap: 20px;
+    }
+
+    .detail-item {
         font-size: 14px;
+    }
+
+    .social-icon {
+        width: 40px; 
+        height: 40px; 
+    }
+    
+    .copyright {
+        font-size: 12px;
     }
 }
