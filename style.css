@@ -340,14 +340,17 @@ body {
 
 /* Individual Project Item Animation */
 .project-item {
-    background-color: rgb(0 0 0 / 10%); 
+    background-color: rgb(0 0 0 / 40%); 
     border-radius: 40px; 
     border: 1px solid rgba(255, 255, 255, 0.3);
     overflow: hidden; 
-    position: relative; 
+    position: relative; /* **CRUCIAL for positioning label and button** */
     display: flex;
     justify-content: center;
     align-items: center;
+    font-weight: 550; /* ADDED: Makes the arrow thicker */
+    
+    
     
     opacity: 0; 
     transform: translateY(20px); 
@@ -368,6 +371,57 @@ body {
     grid-column: 1 / -1; 
     aspect-ratio: 2 / 1; /* Wider aspect ratio for the banner */
 }
+
+/* --- NEW ELEMENTS: Project Label and Circle Button --- */
+.project-item .project-label {
+    position: absolute;
+    top: 40px; 
+    left: 55px; 
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--color-white);
+    z-index: 50; 
+}
+
+/* MODIFIED: Targetting the <a> element now, instead of a div */
+.project-item a.circle-button {
+    position: absolute;
+    top: 40px; /* Aligned with the label's top position */
+    right: 55px; /* Adjusted spacing */
+    
+    width: 35px; /* INCREASED SIZE for better tap target and arrow space */
+    height: 35px;
+    border: 2px solid var(--color-white); /* White border for the circle */
+    border-radius: 50%;
+    
+    background-color: transparent;
+    cursor: pointer;
+    z-index: 50; 
+    
+    /* These three lines are key for perfect centering */
+    display: flex;
+    justify-content: center; /* Centers horizontally */
+    align-items: center;    /* Centers vertically */
+    text-decoration: none; /* Remove underline from the anchor tag */
+    
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.project-item a.circle-button:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: var(--color-white); /* Slight color change on hover for effect */
+}
+
+/* NEW: Style for the arrow icon inside the button */
+.project-item .circle-button .arrow-icon {
+    font-size: 20px; /* Size of the arrow */
+    line-height: 1; /* Helps ensure the character itself doesn't add extra line height */
+    color: var(--color-white); /* Color of the arrow */
+    /* Removed 'display: block;' and 'transform: translateY(2px);'
+       to rely purely on flexbox for centering */
+}
+/* --- END NEW ELEMENTS --- */
+
 
 /* --- Inner Image Frame Styling (Responsive to Parent) --- */
 .project-image-inner {
@@ -445,6 +499,24 @@ body {
         left: 5%; 
         top: 10%; 
     }
+
+    /* Tablet: Project Label and Button Positioning */
+    .project-item .project-label {
+        top: 20px; 
+        left: 30px; 
+    }
+    
+    /* MODIFIED: Adjusted top alignment for the larger button */
+    .project-item a.circle-button { 
+        top: 15px; /* Slightly lower to match label padding */
+        right: 30px; 
+        width: 30px; /* Adjust size for tablet */
+        height: 30px;
+    }
+    
+    .project-item .circle-button .arrow-icon {
+        font-size: 18px;
+    }
 }
 
 /* --- MEDIA QUERY: MOBILE (600px and below) --- */
@@ -475,7 +547,6 @@ body {
         text-align: center; 
         white-space: nowrap; 
     }
-    /* END OF NAV BAR FIX */
     /* END OF NAV BAR FIX */
 
 
@@ -522,6 +593,25 @@ body {
         width: 85%; 
         height: 80%; 
         left: 7.5%; 
-        top: 10%; 
+        top: 14%; 
+    }
+
+    /* Mobile: Project Label and Button Positioning */
+    .project-item .project-label {
+        top: 18px; 
+        left: 30px; 
+        font-size: 14px;
+    }
+    
+    /* MODIFIED: Adjusted top alignment for the larger button */
+    .project-item a.circle-button {
+        top: 15px; 
+        right: 25px; /* Adjusted spacing */
+        width: 25px; 
+        height: 25px;
+    }
+
+    .project-item .circle-button .arrow-icon {
+        font-size: 14px;
     }
 }
